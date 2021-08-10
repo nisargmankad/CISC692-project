@@ -6,7 +6,7 @@ let healthcheck = new health.HealthChecker();
 const app = express();
 app.use('/live', health.LivenessEndpoint(healthcheck))
 app.use('/ready', health.ReadinessEndpoint(healthcheck))
-app.use('/healthy', health.HealthEndpoint(healthcheck))
+app.use('/health', health.HealthEndpoint(healthcheck))
 app.set('view engine', 'ejs');
 
 app.use(express.urlencoded({ extended: false }));
