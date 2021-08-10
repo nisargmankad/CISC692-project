@@ -1,0 +1,12 @@
+import jenkins.model.*
+jenkins = Jenkins.instance
+
+node{
+
+    stage(‘Build’) {
+    steps {
+          sh '/usr/local/bin/docker-compose up --build'
+        }
+    }
+
+}
