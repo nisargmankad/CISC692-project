@@ -1,5 +1,6 @@
 const health = require('@cloudnative/health-connect');
 const express = require('express');
+const { MongoClient } = require('mongodb');
 const mongoose = require('mongoose');
 let healthcheck = new health.HealthChecker();
 
@@ -11,10 +12,18 @@ app.set('view engine', 'ejs');
 
 app.use(express.urlencoded({ extended: false }));
 
-// Connect to MongoDB
+const uri='mongodb+srv://nisargmankad:temp@cluster0.y2xac.mongodb.net/Cluster0?retryWrites=true&w=majority';
+//const uri=encodeURI(urit);
+console.log(uri)
+// const client = new MongoClient(uri);
+// try{
+//   client.connect();
+//   console.w}
+
+//Connect to MongoDB
 mongoose
   .connect(
-    'mongodb://mongo:27017/docker-node-mongo',
+    uri,//'mongodb+srv://nisargmankad:temp@cluster0.y2xac.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
     { useNewUrlParser: true }
   )
   .then(() => console.log('MongoDB Connected'))

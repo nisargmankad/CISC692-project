@@ -1,12 +1,18 @@
-import jenkins.model.*
-jenkins = Jenkins.instance
-
-node{
-
-    stage(‘Build’) {
-    steps {
-          sh '/usr/local/bin/docker-compose up --build'
+pipeline {
+    agent {
+        docker {
+            image 'node:6-alpine'
+            args '-p 3000:3000'
         }
     }
 
+    stages {
+        stage('Build') {
+            steps {
+                sh 'npm install'
+            }
+        }
+
+
+    }
 }
