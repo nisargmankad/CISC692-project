@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-
+console.log(server.address().address)
 const ItemSchema = new Schema({
   name: {
     type: String,
